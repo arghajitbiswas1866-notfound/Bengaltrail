@@ -314,7 +314,12 @@ function getApiBaseUrl() {
 
 const API_URL = getApiBaseUrl();
 
-const FRONTEND_BASE_URL = `${API_URL}/frontend`;
+// const FRONTEND_BASE_URL = `${API_URL}/frontend`;
+const FRONTEND_BASE_URL =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1"
+        ? "/frontend"
+        : "";
 
 // Add click event listener to the "HOME" button //
 const homeLink = document.getElementById("home");
