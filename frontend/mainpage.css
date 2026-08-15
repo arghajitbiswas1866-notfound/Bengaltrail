@@ -102,9 +102,18 @@ nav {
 }
 
 .nav__logo .logo {
-  font-size: 1.5rem;
-  color: var(--white);
-  font-family: "Cinzel", serif;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: auto;
+}
+
+.nav__logo .logo img {
+  display: block;
+  height: 54px;
+  width: auto;
+  max-width: 240px;
+  object-fit: contain;
 }
 
 .nav__menu__btn {
