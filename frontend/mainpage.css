@@ -110,7 +110,7 @@ nav {
 
 .nav__logo .logo img {
   display: block;
-  height: 54px;
+  height: 100px;
   width: auto;
   max-width: 240px;
   object-fit: contain;
