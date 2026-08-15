@@ -1,3 +1,30 @@
+function getImageSource(imageValue) {
+    if (!imageValue) {
+        return "assets/img1.jpeg";
+    }
+
+    if (
+        imageValue.startsWith("http://") ||
+        imageValue.startsWith("https://") ||
+        imageValue.startsWith("data:")
+    ) {
+        return imageValue;
+    }
+
+    if (
+        imageValue.startsWith("/assets/") ||
+        imageValue.startsWith("assets/") ||
+        imageValue.startsWith("/uploads/") ||
+        imageValue.startsWith("uploads/")
+    ) {
+        return imageValue.startsWith("/")
+            ? imageValue
+            : `/${imageValue}`;
+    }
+
+    return imageValue;
+}
+
 // const API_URL =
 //     "http://127.0.0.1:8000";
 
@@ -1267,8 +1294,9 @@ function displayResults(
         ) {
 
             const image =
-                place.image ||
-                "assets/img1.jpeg";
+                getImageSource(
+                    place.image
+                );
 
 
             const card =
@@ -1290,6 +1318,7 @@ function displayResults(
                         place.destination ||
                         "Travel destination"
                     )}"
+                    onerror="this.onerror=null;this.src='assets/img1.jpeg';"
                 >
 
                 <div class="result-content">

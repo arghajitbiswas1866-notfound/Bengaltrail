@@ -218,13 +218,7 @@ function openTripModal(trip) {
     document.getElementById("modalDescription").textContent =
         trip.description;
 
-    const localTripImages = {
-        1: "assets/img1.jpeg",
-        2: "assets/img2.jpeg",
-        3: "assets/img3.jpeg"
-    };
-
-    const imageSrc = localTripImages[trip.id] || trip.image || "assets/img1.jpeg";
+    const imageSrc = getTripImage(trip);
     document.getElementById("modalImage").src = imageSrc;
 
     document.getElementById("modalAI").textContent =
@@ -835,49 +829,58 @@ function renderDynamicTrips(trips) {
 
 function getTripImage(trip) {
 
-    /*
-     * IMPORTANT:
-     *
-     * Always use the local images according
-     * to the Trip ID.
-     *
-     * This prevents broken database paths
-     * such as /images/chatakpur.jpg from
-     * overriding your working assets.
-     */
+    const fallbackImage = "assets/img1.jpeg";
 
-    const localImages = {
-
-        1:
-            "assets/img1.jpeg",
-
-        2:
-            "assets/img2.jpeg",
-
-        3:
-            "assets/img3.jpeg"
-
-    };
-
-
-    // Use local image based on trip ID
-
-    if (
-        localImages[
-            Number(trip.id)
-        ]
-    ) {
-
-        return localImages[
-            Number(trip.id)
-        ];
-
+    if (!trip) {
+        return fallbackImage;
     }
 
+    const rawImage = 
+        trip.image ||
+        trip.cover_image ||
+        trip.thumbnail ||
+        "";
 
-    // Fallback image
+    if (!rawImage) {
+        return fallbackImage;
+    }
 
-    return "assets/img1.jpeg";
+    if (
+        rawImage.startsWith("http://") ||
+        rawImage.startsWith("https://") ||
+        rawImage.startsWith("data:")
+    ) {
+        return rawImage;
+    }
+
+    if (
+        rawImage.startsWith("/uploads/") ||
+        rawImage.startsWith("uploads/")
+    ) {
+        return rawImage.startsWith("/")
+            ? rawImage
+            : `/${rawImage}`;
+    }
+
+    if (
+        rawImage.startsWith("/assets/") ||
+        rawImage.startsWith("assets/")
+    ) {
+        return rawImage.startsWith("/")
+            ? rawImage.replace(/^\/+/, "")
+            : rawImage;
+    }
+
+    if (
+        rawImage.startsWith("/frontend/") ||
+        rawImage.startsWith("frontend/")
+    ) {
+        return rawImage.startsWith("/")
+            ? rawImage.replace(/^\/frontend\//, "frontend/")
+            : rawImage.replace(/^frontend\//, "frontend/");
+    }
+
+    return rawImage;
 
 }
 

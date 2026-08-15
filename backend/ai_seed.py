@@ -596,7 +596,7 @@ destinations = [
         food_cost_per_day=750,
         transport_cost=700,
         rating=4.7,
-        image="assets/darjeeling.png",
+        image="/assets/darjeeling.jpeg",
         latitude=27.0410,
         longitude=88.2663
     ),
@@ -617,7 +617,7 @@ destinations = [
         food_cost_per_day=650,
         transport_cost=600,
         rating=4.5,
-        image="assets/img2.jpeg",
+        image="/assets/kalimpong.jpeg",
         latitude=27.0667,
         longitude=88.4667
     ),
@@ -638,7 +638,7 @@ destinations = [
         food_cost_per_day=700,
         transport_cost=750,
         rating=4.6,
-        image="assets/img3.jpeg",
+        image="/assets/jaldapara.jpeg",
         latitude=26.6944,
         longitude=89.2722
     ),
@@ -659,7 +659,7 @@ destinations = [
         food_cost_per_day=600,
         transport_cost=700,
         rating=4.4,
-        image="assets/img3.jpeg",
+        image="/assets/buxa.jpeg",
         latitude=26.7040,
         longitude=89.5527
     ),
@@ -680,7 +680,7 @@ destinations = [
         food_cost_per_day=600,
         transport_cost=450,
         rating=4.3,
-        image="assets/img2.jpeg",
+        image="/assets/mirik.jpeg",
         latitude=26.8894,
         longitude=88.1803
     ),
@@ -701,7 +701,7 @@ destinations = [
         food_cost_per_day=550,
         transport_cost=500,
         rating=4.6,
-        image="assets/img1.jpeg",
+        image="/assets/chatpukur.jpeg",
         latitude=26.9300,
         longitude=88.3650
     ),
@@ -722,7 +722,7 @@ destinations = [
         food_cost_per_day=600,
         transport_cost=1800,
         rating=4.8,
-        image="/images/sandakphu.jpg",
+        image="/assets/sandakphu.jpeg",
         latitude=27.1050,
         longitude=88.0040
     ),
@@ -743,7 +743,7 @@ destinations = [
         food_cost_per_day=650,
         transport_cost=550,
         rating=4.5,
-        image="/images/tinchuley.jpg",
+        image="/assets/tinchuey.jpeg",
         latitude=27.1000,
         longitude=88.3900
     ),
@@ -764,7 +764,7 @@ destinations = [
         food_cost_per_day=550,
         transport_cost=500,
         rating=4.4,
-        image="/images/lepchajagat.jpg",
+        image="/assets/lepchajagat.jpeg",
         latitude=27.0200,
         longitude=88.2400
     ),
@@ -785,7 +785,7 @@ destinations = [
         food_cost_per_day=600,
         transport_cost=600,
         rating=4.4,
-        image="/images/pedong.jpg",
+        image="/assets/pedong.jpeg",
         latitude=27.1800,
         longitude=88.6100
     ),
@@ -806,7 +806,7 @@ destinations = [
         food_cost_per_day=600,
         transport_cost=650,
         rating=4.5,
-        image="/images/samsing.jpg",
+        image="/assets/samsing_view.jpeg",
         latitude=26.8700,
         longitude=88.7800
     ),
@@ -827,7 +827,7 @@ destinations = [
         food_cost_per_day=650,
         transport_cost=900,
         rating=4.7,
-        image="/images/neora-valley.jpg",
+        image="/assets/neora-valley_national-park.jpeg",
         latitude=27.0200,
         longitude=88.7000
     ),
@@ -853,7 +853,7 @@ destinations = [
         food_cost_per_day=800,
         transport_cost=1000,
         rating=4.7,
-        image="/images/shillong.jpg",
+        image="/assets/shillong.jpeg",
         latitude=25.5788,
         longitude=91.8933
     ),
@@ -874,7 +874,7 @@ destinations = [
         food_cost_per_day=750,
         transport_cost=1100,
         rating=4.8,
-        image="/images/sohra.jpg",
+        image="/assets/sohra.jpeg",
         latitude=25.2700,
         longitude=91.7300
     ),
@@ -895,7 +895,7 @@ destinations = [
         food_cost_per_day=700,
         transport_cost=1200,
         rating=4.8,
-        image="/images/dawki.jpg",
+        image="/assets/dawki_river.jpeg",
         latitude=25.1930,
         longitude=92.0250
     ),
@@ -916,7 +916,7 @@ destinations = [
         food_cost_per_day=650,
         transport_cost=1100,
         rating=4.7,
-        image="/images/shnongpdeng.jpg",
+        image="/assets/shnongpdeng.jpeg",
         latitude=25.1800,
         longitude=92.0400
     ),
@@ -937,7 +937,7 @@ destinations = [
         food_cost_per_day=650,
         transport_cost=1000,
         rating=4.6,
-        image="/images/mawlynnong.jpg",
+        image="/assets/mawlynnong.jpeg",
         latitude=25.2100,
         longitude=91.9200
     ),
@@ -963,7 +963,7 @@ destinations = [
         food_cost_per_day=750,
         transport_cost=1200,
         rating=4.8,
-        image="/images/kaziranga.jpg",
+        image="/assets/kaziranga_national-park.jpeg",
         latitude=26.5775,
         longitude=93.1711
     ),
@@ -984,7 +984,7 @@ destinations = [
         food_cost_per_day=600,
         transport_cost=900,
         rating=4.6,
-        image="/images/majuli.jpg",
+        image="/assets/majuli.jpeg",
         latitude=27.0016,
         longitude=94.2243
     ),
@@ -1005,7 +1005,7 @@ destinations = [
         food_cost_per_day=700,
         transport_cost=1100,
         rating=4.8,
-        image="/images/manas.jpg",
+        image="/assets/manas.png",
         latitude=26.6590,
         longitude=91.0010
     ),
@@ -1026,7 +1026,7 @@ destinations = [
         food_cost_per_day=650,
         transport_cost=600,
         rating=4.4,
-        image="/images/guwahati.jpg",
+        image="/assets/guwahati.png",
         latitude=26.1445,
         longitude=91.7362
     )
@@ -1048,7 +1048,22 @@ for destination in destinations:
         .first()
     )
 
-    if not existing:
+    if existing:
+        existing.category = destination.category
+        existing.district = destination.district
+        existing.description = destination.description
+        existing.best_for = destination.best_for
+        existing.tags = destination.tags
+        existing.average_stay = destination.average_stay
+        existing.base_cost_per_person = destination.base_cost_per_person
+        existing.hotel_cost_per_night = destination.hotel_cost_per_night
+        existing.food_cost_per_day = destination.food_cost_per_day
+        existing.transport_cost = destination.transport_cost
+        existing.rating = destination.rating
+        existing.image = destination.image
+        existing.latitude = destination.latitude
+        existing.longitude = destination.longitude
+    else:
         db.add(destination)
 
 

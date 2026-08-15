@@ -1684,6 +1684,16 @@ if FRONTEND_DIR.exists():
         name="frontend",
     )
 
+    ASSETS_DIR = FRONTEND_DIR / "assets"
+    if ASSETS_DIR.exists():
+        app.mount(
+            "/assets",
+            StaticFiles(
+                directory=ASSETS_DIR
+            ),
+            name="assets",
+        )
+
 
 # =========================================================
 # PROFILE PHOTO
