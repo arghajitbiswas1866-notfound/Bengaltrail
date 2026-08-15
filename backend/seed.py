@@ -948,7 +948,7 @@ try:
         ),
 
         Trip(
-            title="Tea Garden Trails",
+            title="Darjeeling",
             category="Tea Gardens",
             route="Kurseong → Mirik → Darjeeling",
             image="/images/chatakpur.jpg",

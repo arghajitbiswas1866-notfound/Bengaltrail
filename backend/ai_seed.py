@@ -596,7 +596,7 @@ destinations = [
         food_cost_per_day=750,
         transport_cost=700,
         rating=4.7,
-        image="assets/img1.jpeg",
+        image="assets/darjeeling.png",
         latitude=27.0410,
         longitude=88.2663
     ),
