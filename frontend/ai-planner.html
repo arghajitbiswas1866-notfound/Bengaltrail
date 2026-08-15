@@ -104,18 +104,67 @@
 
                 <!-- Starting location -->
 
-                <div class="form-group">
+                <!-- Starting location -->
+                <div class="form-group location-group">
 
-                    <label>
+                    <label for="startingLocation">
                         Starting Location
                     </label>
 
-                    <input
-                        type="text"
-                        id="startingLocation"
-                        placeholder="e.g. Siliguri"
-                        required
+                    <div class="location-input-wrapper">
+
+                        <input
+                            type="text"
+                            id="startingLocation"
+                            placeholder="e.g. Salt Lake, Kolkata"
+                            autocomplete="off"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="verifyLocationBtn"
+                            class="verify-location-btn"
+                        >
+                            <i class="ri-map-pin-line"></i>
+                            Verify
+                        </button>
+
+                    </div>
+
+                    <p
+                        id="locationStatus"
+                        class="location-status"
                     >
+                        Enter your city, town, locality, station
+                        or landmark and verify it.
+                    </p>
+
+                    <div
+                        id="locationResults"
+                        class="location-results hidden"
+                    ></div>
+
+                    <!-- Selected location data -->
+
+                    <input
+                        type="hidden"
+                        id="startingLatitude"
+                    >
+
+                    <input
+                        type="hidden"
+                        id="startingLongitude"
+                    >
+
+                    <input
+                        type="hidden"
+                        id="verifiedLocation"
+                    >
+
+                    <small class="location-attribution">
+                        Location data © OpenStreetMap contributors
+                    </small>
 
                 </div>
 
